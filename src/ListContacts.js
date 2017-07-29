@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 // stateless functional component
+//invokes onDeleteContact prop in parent App component
 function ListContacts (props) {
   return (
     <ol className='contact-list'>
@@ -13,7 +14,7 @@ function ListContacts (props) {
             <p>{contact.name}</p>
             <p>{contact.email}</p>
           </div> 
-          <button className='contact-remove'>
+          <button onClick={() => props.onDeleteContact(contact)} className='contact-remove'>
             Remove
           </button> 
         </li>  
