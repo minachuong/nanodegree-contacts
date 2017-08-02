@@ -43,10 +43,13 @@ class App extends Component {
     //calls the current state; looks at the contacts property
     //filters through each item in contacts that satisfies the filter
     //merges the new contacts into the current state 
+    //also removes the contact from the database via ContactsAPI.remove
   removeContact = (contact) => {
     this.setState((state) => ({
       contacts: state.contacts.filter((c) => c.id !== contact.id )
     }))
+
+    ContactsAPI.remove(contact)
   }
   //onDeleteContact is invoke in the ListContact component
   render() {
