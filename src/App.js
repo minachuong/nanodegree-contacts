@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ListContacts from './ListContacts'
 import * as ContactsAPI from './utils/ContactsAPI'
-
+import CreateContact from './CreateContact'
 //const contacts = [
 //  {
 //    "id": "ryan",
@@ -26,6 +26,7 @@ import * as ContactsAPI from './utils/ContactsAPI'
 //initializing state within component
 class App extends Component {
   state = {
+    screen: 'create', // list, create
     contacts: []
   }
   
@@ -54,13 +55,18 @@ class App extends Component {
   //onDeleteContact is invoke in the ListContact component
   render() {
     return (
-      <div>  
-        <ListContacts 
-          onDeleteContact={this.removeContact} 
-          contacts={this.state.contacts} 
-        />
+      <div className ='app'>
+        {this.state.screen === 'list' && (
+          <ListContacts 
+           onDeleteContact={this.removeContact} 
+           contacts={this.state.contacts} 
+          />
+        )}  
+        {this.state.screen === 'create' && (
+          <CreateContact />
+        )}
       </div>
-    );
+    )
   }
 }
 
