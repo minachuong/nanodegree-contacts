@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import ListContacts from './ListContacts'
 import * as ContactsAPI from './utils/ContactsAPI'
 import CreateContact from './CreateContact'
+
 //const contacts = [
 //  {
 //    "id": "ryan",
@@ -27,7 +28,6 @@ import CreateContact from './CreateContact'
 //initializing state within component
 class App extends Component {
   state = {
-    screen: 'list', // list, create
     contacts: []
   }
   
@@ -61,9 +61,6 @@ class App extends Component {
           <ListContacts 
             onDeleteContact={this.removeContact} 
             contacts={this.state.contacts} 
-            onNavigate={() => {
-              this.setState({ screen: 'create' })
-            }}
           />
         )}/>
         <Route path='/create' component={CreateContact}/>
